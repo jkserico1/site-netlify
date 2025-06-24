@@ -227,7 +227,7 @@ function App() {
   };
 
   const handleFinalRedirect = () => {
-    window.location.href = 'https://www.ggcheckout.com/checkout/v2/L9Y8DaDTd8Waqsnj3UsQ';
+    window.location.href = 'https://www.ggcheckout.com/checkout/v2/wvU3B4BJVax5hWflpYas';
   };
 
   const nextImage = () => {
