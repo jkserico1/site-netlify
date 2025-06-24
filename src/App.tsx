@@ -227,6 +227,24 @@ function App() {
   };
 
   const handleFinalRedirect = () => {
+    // === AQUI É ONDE VOCÊ ADICIONA O CÓDIGO DA UTMIFY ===
+    if (window.utmify && window.utmify.pixel) {
+        window.utmify.pixel.track('InitiateCheckout', {
+            // Opcional: Adicione informações relevantes que a UTMify possa usar.
+            // Por exemplo, o valor do produto, moeda, IDs do conteúdo.
+            // Isso ajuda a otimizar o rastreamento e futuras campanhas.
+            value: 14.90, // O valor de R$14,90 que você mostra no checkout
+            currency: 'BRL', // Moeda brasileira
+            content_ids: ['sigilox_acesso_completo'], // Um ID único para essa oferta
+            content_name: 'Acesso Completo ao Relatório Tinder', // Nome do produto/oferta
+            content_category: 'servico_assinatura' // Categoria, se aplicável
+        });
+        console.log('Evento InitiateCheckout da UTMify disparado!');
+    } else {
+        console.warn('Pixel da UTMify não carregado ou não disponível ao tentar disparar InitiateCheckout.');
+    }
+    // === FIM DA ADIÇÃO DO CÓDIGO DA UTMIFY ===
+
     window.location.href = 'https://checkout.lojaonlinee.site/VCCL1O8SBXH3';
   };
 
@@ -1034,7 +1052,7 @@ function App() {
                 onClick={handleFinalRedirect}
                 className="w-full tinder-gradient text-white py-4 rounded-full font-bold text-sm mb-4 animate-pulse-gentle"
               >
-                VER FOTOS COMPLETAS AGORA – SÓ R$14,90
+                QUERO VER TUDO AGORA!
               </button>
 
               {/* Timer */}
